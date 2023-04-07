@@ -1,34 +1,41 @@
 /*!
- * ExternalTemplateRemotesPlugin
- * License: MIT (https://mit-license.org/)
+ * NextExternalTemplateRemotesPlugin 
+ * Based on Zackary Jackson's ExternalTemplateRemotesPlugin
+ * https://www.npmjs.com/package/external-remotes-plugin
+ * 
+ * Adapted to work with NextFederationPlugin
  */
 
-const extractUrlAndGlobal = require('webpack/lib/util/extractUrlAndGlobal');
 const { RawSource } = require('webpack-sources');
 
-const PLUGIN_NAME = 'ExternalTemplateRemotesPlugin';
+const PLUGIN_NAME = 'NextExternalTemplateRemotesPlugin';
 
-class ExternalTemplateRemotesPlugin {
+class NextExternalTemplateRemotesPlugin {
     apply(compiler) {
         compiler.hooks.make.tap(PLUGIN_NAME, compilation => {
             const scriptExternalModules = [];
 
             compilation.hooks.buildModule.tap(PLUGIN_NAME, module => {
-                if (module.constructor.name === 'ExternalModule' && module.externalType === 'script') {
+                if (module.constructor.name === 'ExternalModule' && module.externalType === 'promise') {
                     scriptExternalModules.push(module);
                 }
             });
 
             compilation.hooks.afterCodeGeneration.tap(PLUGIN_NAME, function() {
                 scriptExternalModules.map(module => {
-                    const urlTemplate = extractUrlAndGlobal(module.request)[0];
-                    const urlExpression = toExpression(urlTemplate);
+                    const regex = /new\s+URL\("([^"]*?)"\);/g;
                     const sourceMap = compilation.codeGenerationResults.get(module).sources;
                     const rawSource = sourceMap.get('javascript');
-                    sourceMap.set(
-                        'javascript',
-                        new RawSource(rawSource.source().replace(`"${urlTemplate}"`, urlExpression))
-                    );
+                    const match = regex.exec(rawSource.source());
+
+                    if (match !== null) {
+                        const urlTemplate = match[1];
+                        const urlExpression = toExpression(urlTemplate);                        
+                        sourceMap.set(
+                            'javascript',
+                            new RawSource(rawSource.source().replace(`"${urlTemplate}"`, urlExpression))
+                        );
+                    }
                 });
             });
         });
@@ -75,4 +82,4 @@ function toExpression(templateUrl) {
     return result.join(' + ');
 }
 
-module.exports = ExternalTemplateRemotesPlugin;
+module.exports = NextExternalTemplateRemotesPlugin;

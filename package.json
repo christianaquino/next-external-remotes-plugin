@@ -1,9 +1,10 @@
 {
-  "name": "external-remotes-plugin",
+  "name": "next-external-remotes-plugin",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:module-federation/external-remotes-plugin.git",
-  "author": "Zack Jackson <zackary.l.jackson@gmail.com>",
+  "repository": "git@github.com:christianaquino/next-external-remotes-plugin.git",
+  "author": "Chrsitian Aquino <aqn.christian@gmail.com>",
+  "contributors": ["Zack Jackson <zackary.l.jackson@gmail.com>"],
   "license": "MIT",
   "dependencies": {
     "webpack-sources": "^2.2.0"
