@@ -1,8 +1,15 @@
 # next-external-remotes-plugin
 
-**Host next.config.js**
+This plugin is a fork from Zackary Jackson's ExternalTemplateRemotesPlugin (https://www.npmjs.com/package/external-remotes-plugin)
+and it was adapted to work properly with NextFederationPlugin (https://www.npmjs.com/package/@module-federation/nextjs-mf).
 
-Using env vars:
+**Env config**
+
+```
+APP1="https://url-to-my-mf-in-some-environment"
+```
+
+**Host next.config.js**
 
 ```js
     webpack(config) {
@@ -10,7 +17,7 @@ Using env vars:
                 new NextFederationPlugin({
                     name: 'container',
                     remotes: {
-                        app1: 'app@[window.__NEXT_DATA__.runtimeConfig.app1]'
+                        app1: 'app1@[window.__NEXT_DATA__.runtimeConfig.app1]'
                     },
                     filename: 'static/chunks/container.js',
                     shared: {},
