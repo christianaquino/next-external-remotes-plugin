@@ -12,6 +12,11 @@ APP1="https://url-to-my-mf-in-some-environment"
 **Host next.config.js**
 
 ```js
+const NextExternalTemplateRemotesPlugin = require('./next-external-remotes-plugin');
+    
+module.exports = {    
+    // ...
+    // ...
     webpack(config) {
             config.plugins.push(
                 new NextFederationPlugin({
@@ -30,4 +35,7 @@ APP1="https://url-to-my-mf-in-some-environment"
     publicRuntimeConfig: {
         app1: process.env.APP1
     },
+    // ...
+    // ...
+}
 ```
