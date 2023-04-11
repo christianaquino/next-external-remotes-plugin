@@ -3,6 +3,13 @@
 This plugin is a fork from Zackary Jackson's ExternalTemplateRemotesPlugin (https://www.npmjs.com/package/external-remotes-plugin)
 and it was adapted to work properly with NextFederationPlugin (https://www.npmjs.com/package/@module-federation/nextjs-mf).
 
+**Installation**
+
+Using npm:
+```shell
+$ npm i next-external-remotes-plugin
+```
+
 **Env config**
 
 In your `env` configuration add the URL for remote:
