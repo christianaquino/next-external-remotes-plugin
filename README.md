@@ -5,11 +5,15 @@ and it was adapted to work properly with NextFederationPlugin (https://www.npmjs
 
 **Env config**
 
+In your `env` configuration add the URL for remote:
+
 ```
 APP1="https://url-to-my-mf-in-some-environment"
 ```
 
 **Host next.config.js**
+
+Then add the remote URL to `publicRuntimeConfig` and the `NextFederationPlugin` and `NextExternalTemplateRemotesPlugin` config as follow:
 
 ```js
 const NextExternalTemplateRemotesPlugin = require('./next-external-remotes-plugin');
