@@ -1,11 +1,21 @@
 {
   "name": "next-external-remotes-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "git@github.com:christianaquino/next-external-remotes-plugin.git",
   "author": "Chrsitian Aquino <aqn.christian@gmail.com>",
-  "contributors": ["Zack Jackson <zackary.l.jackson@gmail.com>"],
+  "contributors": [
+    "Zack Jackson <zackary.l.jackson@gmail.com>"
+  ],
   "license": "MIT",
+  "keywords": [
+    "nextjs",
+    "module-federation",
+    "remotes",
+    "dynamic",
+    "webpack",
+    "plugin"
+  ],
   "dependencies": {
     "webpack-sources": "^2.2.0"
   },
