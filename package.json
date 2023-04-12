@@ -1,6 +1,6 @@
 {
   "name": "next-external-remotes-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "repository": "git@github.com:christianaquino/next-external-remotes-plugin.git",
   "author": "Chrsitian Aquino <aqn.christian@gmail.com>",
