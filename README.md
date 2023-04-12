@@ -20,10 +20,10 @@ APP1="https://url-to-my-mf-in-some-environment"
 
 **Host next.config.js**
 
-Then add the remote URL to `publicRuntimeConfig` and the `NextFederationPlugin` and `NextExternalTemplateRemotesPlugin` config as follow:
+Add the remote URL to `publicRuntimeConfig`, and the `NextFederationPlugin` and `NextExternalTemplateRemotesPlugin` config as follow:
 
 ```js
-const NextExternalTemplateRemotesPlugin = require('./next-external-remotes-plugin');
+const NextExternalTemplateRemotesPlugin = require('next-external-remotes-plugin');
     
 module.exports = {    
     // ...
